@@ -73,6 +73,7 @@ st.set_page_config(
     page_title="Randonnées Romandie",
     page_icon="🥾",
     layout="wide",
+    initial_sidebar_state="expanded",
 )
 
 
@@ -94,9 +95,8 @@ if data is None:
     )
     st.stop()
 
-# Sidebar: multi-select filters
-st.sidebar.title("🥾 Randonnées Romandie")
-st.sidebar.caption("Filtres multiples — même données que randoromandie.com")
+# Sidebar: multi-select filters (expanded by default so mobile users see it)
+st.sidebar.title("🥾 Filtres")
 
 options = filter_options()
 
@@ -166,10 +166,7 @@ filtered = filter_hikes(
 
 # Main area
 st.title("Randonnées en Suisse romande")
-st.caption(
-    "Source : [randoromandie.com](https://randoromandie.com/) — "
-    "Filtres multiples appliqués ici."
-)
+st.caption("Source : [randoromandie.com](https://randoromandie.com/)")
 
 st.sidebar.metric("Randonnées affichées", len(filtered))
 st.sidebar.metric("Total en base", len(data))
